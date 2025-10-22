@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Glow Beauty Emporium</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gradient-to-b from-background via-primary/5 to-background">
+    <div id="root" class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <div class="bg-primary text-primary-foreground py-2 px-4">
+            <div class="container mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 text-xs sm:text-sm">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="map-pin" class="h-4 w-4"></i>
+                    <span>2 St Peters Street, Huddersfield HD1 1LN</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="phone" class="h-4 w-4"></i>
+                    <a href="tel:07886221372" class="hover:underline">07886221372</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="mail" class="h-4 w-4"></i>
+                    <a href="mailto:enquiries@glowbeautyemporium.com" class="hover:underline">enquiries@glowbeautyemporium.com</a>
+                </div>
+            </div>
+        </div>
+        <header class="bg-background/80 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <a href="/" class="flex items-center gap-3 transition-transform hover:scale-105">
+                        <img src="assets/logo.png" alt="Glow Beauty Emporium" class="h-12 w-12 object-contain" />
+                        <span class="text-xl font-bold text-foreground hidden sm:inline">
+                            Glow Beauty Emporium
+                        </span>
+                    </a>
+
+                    <div class="flex items-center gap-4">
+                        <!-- Desktop Navigation -->
+                        <nav class="hidden lg:flex gap-6">
+                            <a href="/" class="text-sm font-medium transition-colors hover:text-primary text-foreground/80">Home</a>
+                            <a href="/shop-products.html" class="text-sm font-medium transition-colors hover:text-primary text-foreground/80">Shop Products</a>
+                            <a href="/book-services.html" class="text-sm font-medium transition-colors hover:text-primary text-foreground/80">Book Services</a>
+                            <a href="/gallery.html" class="text-sm font-medium transition-colors hover:text-primary text-primary">Gallery</a>
+                            <a href="/about.html" class="text-sm font-medium transition-colors hover:text-primary text-foreground/80">About Us</a>
+                        </nav>
+
+                        <div class="flex items-center gap-3">
+                            <!-- Mobile Menu -->
+                            <button class="lg:hidden">
+                                <i data-lucide="menu" class="h-5 w-5"></i>
+                            </button>
+
+                            <!-- Cart Icon -->
+                            <button>
+                                <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                            </button>
+
+                            <a href="/login.html" class="text-sm font-medium">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <div class="container mx-auto px-4 py-12">
+                <!-- Page Header -->
+                <div class="text-center mb-12 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                        <span class="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                            Our Gallery
+                        </span>
+                    </h1>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Explore our portfolio of stunning transformations and beauty creations
+                    </p>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                    <div class="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50">
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" alt="Bridal Makeup & Styling" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary/90 text-primary-foreground backdrop-blur-sm">Bridal</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Bridal Makeup & Styling</h3>
+                            <p class="text-sm text-muted-foreground italic">Client: Sarah M.</p>
+                            <p class="text-sm text-foreground/80 leading-relaxed">Complete bridal makeover with natural glam look and elegant updo for a summer wedding.</p>
+                        </div>
+                    </div>
+                    <div class="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50">
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80" alt="Party Glam Makeup" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary/90 text-primary-foreground backdrop-blur-sm">Party</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Party Glam Makeup</h3>
+                            <p class="text-sm text-muted-foreground italic">Client: Jessica L.</p>
+                            <p class="text-sm text-foreground/80 leading-relaxed">Bold smokey eyes with glossy lips for a birthday celebration.</p>
+                        </div>
+                    </div>
+                    <div class="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50">
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&q=80" alt="Natural Everyday Look" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary/90 text-primary-foreground backdrop-blur-sm">Natural</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Natural Everyday Look</h3>
+                            <p class="text-sm text-muted-foreground italic">Client: Emma K.</p>
+                            <p class="text-sm text-foreground/80 leading-relaxed">Fresh, dewy makeup with soft waves for a photoshoot.</p>
+                        </div>
+                    </div>
+                    <div class="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50">
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Luxury Wig Installation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary/90 text-primary-foreground backdrop-blur-sm">Wigs</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Luxury Wig Installation</h3>
+                            <p class="text-sm text-muted-foreground italic">Client: Michelle D.</p>
+                            <p class="text-sm text-foreground/80 leading-relaxed">Premium lace front wig installation with seamless hairline.</p>
+                        </div>
+                    </div>
+                    <div class="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50">
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Braided Updo Style" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary/90 text-primary-foreground backdrop-blur-sm">Hairstyling</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Braided Updo Style</h3>
+                            <p class="text-sm text-muted-foreground italic">Client: Aisha T.</p>
+                            <p class="text-sm text-foreground/80 leading-relaxed">Intricate braided updo perfect for special occasions.</p>
+                        </div>
+                    </div>
+                    <div class="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border-border/50">
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Evening Glam Transformation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary/90 text-primary-foreground backdrop-blur-sm">Evening</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <h3 class="font-bold text-lg text-foreground group-hover:text-primary transition-colors">Evening Glam Transformation</h3>
+                            <p class="text-sm text-muted-foreground italic">Client: Rachel P.</p>
+                            <p class="text-sm text-foreground/80 leading-relaxed">Full glam makeup with dramatic lashes and sleek hairstyle.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-16 p-8 rounded-lg bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 border border-border/50">
+                    <h2 class="text-2xl font-bold mb-3 text-foreground">
+                        Ready for Your Transformation?
+                    </h2>
+                    <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                        Book your appointment today and let us create your perfect look
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="book-services.html" class="inline-block px-8 py-3 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white rounded-md font-semibold transition-all hover:scale-105 shadow-lg">
+                            Book Services
+                        </a>
+                        <a href="shop-products.html" class="inline-block px-8 py-3 bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 text-foreground rounded-md font-semibold transition-all hover:scale-105 shadow-lg">
+                            Shop Products
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="relative mt-auto overflow-hidden w-full">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10"></div>
+
+            <div class="relative border-t border-border/50 backdrop-blur-sm w-full">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 max-w-full">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+                        <!-- Brand Section -->
+                        <div class="text-center sm:text-left space-y-2 sm:space-y-3 px-2">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent break-words">
+                                Glow Beauty Emporium
+                            </h3>
+                            <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto sm:mx-0 break-words">
+                                Your one-stop beauty destination for flawless makeovers and premium services
+                            </p>
+                        </div>
+
+                        <!-- Address Section -->
+                        <div class="text-center sm:text-left space-y-2 sm:space-y-3 px-2">
+                            <h4 class="text-sm sm:text-base font-semibold text-foreground/90 mb-2 sm:mb-4">Visit Us</h4>
+                            <div class="flex flex-col gap-2 sm:gap-3 text-xs sm:text-sm">
+                                <div class="flex items-start justify-center sm:justify-start gap-2 sm:gap-3 text-muted-foreground hover:text-foreground transition-colors group">
+                                    <i data-lucide="map-pin" class="h-4 w-4 sm:h-5 sm:w-5 mt-0.5 text-primary group-hover:scale-110 transition-transform flex-shrink-0"></i>
+                                    <div class="text-left break-words max-w-[250px]">
+                                        <p class="break-words">2 St Peters Street</p>
+                                        <p class="break-words">Huddersfield HD1 1LN</p>
+                                        <p class="break-words">United Kingdom</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Section -->
+                        <div class="text-center sm:text-left space-y-2 sm:space-y-3 sm:col-span-2 lg:col-span-1 px-2">
+                            <h4 class="text-sm sm:text-base font-semibold text-foreground/90 mb-2 sm:mb-4">Contact Us</h4>
+                            <div class="flex flex-col gap-2 sm:gap-3 text-xs sm:text-sm">
+                                <a href="tel:07886221372" class="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 text-muted-foreground hover:text-foreground transition-colors group break-words">
+                                    <i data-lucide="phone" class="h-4 w-4 sm:h-5 sm:w-5 text-accent group-hover:scale-110 transition-transform flex-shrink-0"></i>
+                                    <span class="break-words">07886 221372</span>
+                                </a>
+                                <a href="mailto:enquiries@glowbeautyemporium.com" class="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 text-muted-foreground hover:text-foreground transition-colors group break-words">
+                                    <i data-lucide="mail" class="h-4 w-4 sm:h-5 sm:w-5 text-secondary group-hover:scale-110 transition-transform flex-shrink-0"></i>
+                                    <span class="break-words max-w-[280px] sm:max-w-none">enquiries@glowbeautyemporium.com</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-border/30 pt-6 sm:pt-8">
+                        <p class="text-center text-xs sm:text-sm text-muted-foreground px-4 break-words">
+                            © 2024 Glow Beauty Emporium. All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
