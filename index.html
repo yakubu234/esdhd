@@ -1,26 +1,583 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/logo-favicon.png" type="image/png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glow Beauty Emporium - Premium Beauty Services & Products</title>
-    <meta name="description" content="Discover premium beauty services and products at Glow Beauty Emporium. Book makeup, hairstyling services, or shop our collection of hair extensions, wigs, and beauty accessories." />
-    <meta name="author" content="Glow Beauty Emporium" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dropdown Accordion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left Sidebar (col-12 on mobile, col-md-3 on desktop) -->
+            <div class="col-12 col-md-3">
+                <div class="settings-sidebar rounded shadow-sm py-3">
+                    <!-- Sidebar Items -->
+                    <a id="general-settings-link" href="#" class="settings-link active" onclick="showSection('general', this)">General Settings</a>
+                    <a id="sms-settings-link" href="#" class="settings-link" onclick="showSection('sms', this)">SMS Settings</a>
+                </div>
+            </div>
 
-    <meta property="og:title" content="Glow Beauty Emporium - Premium Beauty Services & Products" />
-    <meta property="og:description" content="Discover premium beauty services and products at Glow Beauty Emporium. Book makeup, hairstyling services, or shop our collection of hair extensions, wigs, and beauty accessories." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og-image.png" />
+            <!-- Main Content Area (col-12 on mobile, col-md-9 on desktop) -->
+            <div class="col-12 col-md-9">
+                <!-- 1. GENERAL SETTINGS (Initial View) -->
+                <div id="general-settings" class="settings-content-card">
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Glow Beauty Emporium - Premium Beauty Services & Products" />
-    <meta name="twitter:description" content="Discover premium beauty services and products at Glow Beauty Emporium. Book makeup, hairstyling services, or shop our collection of hair extensions, wigs, and beauty accessories." />
-    <meta name="twitter:image" content="/og-image.png" />
-  </head>
+                    <div class="settings-accordion-container" id="generalSettingsAccordion">
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+                        <!-- Accordion Item 1: Notification Channels -->
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-header d-flex justify-content-between align-items-center"
+                                data-toggle="collapse" data-target="#channelsCollapse" aria-expanded="true" aria-controls="channelsCollapse">
+                                <div>
+                                    <div>Notification Channels</div>
+                                    <p class="text-muted small mb-0 font-weight-normal">Select how you'd like to receive notifications</p>
+                                </div>
+                                <i class="fas fa-chevron-up text-muted small chevron-icon"></i>
+                            </div>
+
+                            <div id="channelsCollapse" class="collapse show" data-parent="#generalSettingsAccordion">
+                                <div class="card-body">
+                                    <!-- Item: Email Notifications -->
+                                    <div class="notification-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong class="d-block">Email Notifications</strong>
+                                            <small class="text-muted">Receive E-mail notification</small>
+                                        </div>
+                                        <div class="custom-control custom-switch custom-switch-lg">
+                                            <input type="checkbox" class="custom-control-input" id="emailNotifications" onchange="savePreference('emailNotifications', this.checked ? 1 : 0)">
+                                            <label class="custom-control-label" for="emailNotifications"></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Item: In-App Notifications -->
+                                    <div class="notification-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong class="d-block">In-App Notifications</strong>
+                                            <small class="text-muted">Receive In-App notification </small>
+                                        </div>
+                                        <div class="custom-control custom-switch custom-switch-lg">
+                                            <input type="checkbox" class="custom-control-input" id="inAppNotifications" onchange="savePreference('inAppNotifications', this.checked ? 1 : 0)">
+                                            <label class="custom-control-label" for="inAppNotifications"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2: Preferred Notification Time -->
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-header d-flex justify-content-between align-items-center"
+                                data-toggle="collapse" data-target="#timeCollapse" aria-expanded="true" aria-controls="timeCollapse">
+                                <div>
+                                    <div>Preferred Notification Time</div>
+                                    <p class="text-muted small mb-0 font-weight-normal">Choose when you'd like to receive notifications</p>
+                                </div>
+                                <i class="fas fa-chevron-up text-muted small chevron-icon"></i>
+                            </div>
+
+                            <div id="timeCollapse" class="collapse show" data-parent="#generalSettingsAccordion">
+                                <div class="card-body">
+
+                                    <!-- Item: Receive at anytime -->
+                                    <div class="notification-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong class="d-block">Receive at anytime</strong>
+                                            <small class="text-muted">Receive notification at any given time</small>
+                                        </div>
+                                        <div class="custom-control custom-switch custom-switch-lg">
+                                            <input type="checkbox" class="custom-control-input" id="receiveAnytime">
+                                            <label class="custom-control-label" for="receiveAnytime"></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Item: Enable Schedule (Toggle Trigger) -->
+                                    <div class="notification-item d-flex justify-content-between align-items-center"
+                                        id="scheduleToggleHeader"
+                                        style="cursor: pointer;">
+
+                                        <div>
+                                            <strong class="d-block">Enable Schedule</strong>
+                                            <small class="text-muted">Automatically allow notification during set hours</small>
+                                        </div>
+                                        <!-- NEW: Invisible span holds the collapse triggers for the switch's logic -->
+                                        <span data-toggle="collapse"
+                                            data-target="#scheduleCollapse"
+                                            aria-expanded="true"
+                                            aria-controls="scheduleCollapse"
+                                            style="position: absolute; width: 2.75rem; height: 1.5rem; right: 15px; top: 50%; transform: translateY(-50%); z-index: 10;">
+                                        </span>
+
+                                        <!-- NOTE: The switch is visually part of the header row -->
+                                        <div class="custom-control custom-switch custom-switch-lg">
+                                            <input type="checkbox" class="custom-control-input" id="enableSchedule" checked>
+                                            <label class="custom-control-label" for="enableSchedule"></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Collapsible Schedule Content -->
+                                    <div class="collapse show schedule-content-wrapper" id="scheduleCollapse">
+
+                                        <!-- Time Pickers -->
+                                        <div class="time-pickers-container row mx-0">
+
+                                            <!-- From Picker (col-6 ensures side-by-side on desktop/mobile) -->
+                                            <div class="time-picker-group col-6">
+                                                <label class="d-block" for="fromTime">From</label>
+                                                <select class="form-control" id="fromTime">
+                                                    <!-- Options generated by JS -->
+                                                </select>
+                                            </div>
+
+                                            <!-- To Picker (col-6 ensures side-by-side on desktop/mobile) -->
+                                            <div class="time-picker-group col-6 px-2">
+                                                <label class="d-block" for="toTime">To</label>
+                                                <select class="form-control" id="toTime">
+                                                    <!-- Options generated by JS -->
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Applies To Checkboxes -->
+                                        <div class="applies-to-group d-flex flex-wrap pt-2">
+                                            <p class="mb-2 text-sm w-100">Applies to</p>
+
+                                            <label class="applies-to-option mr-3 mb-2">
+                                                <input type="checkbox" id="allChannel" checked>
+                                                <span>All Channel</span>
+                                            </label>
+
+                                            <label class="applies-to-option mr-3 mb-2">
+                                                <input type="checkbox" id="emailChannel">
+                                                <span>Email Notifications</span>
+                                            </label>
+
+                                            <label class="applies-to-option mb-2">
+                                                <input type="checkbox" id="inAppChannel">
+                                                <span>In-App Notifications</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion item 3: Unanswered notification -->
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-header d-flex justify-content-between align-items-center"
+                                data-toggle="collapse" data-target="#unansweredCollapse" aria-expanded="true" aria-controls="unansweredCollapse">
+                                <div>
+                                    <div>Unanswered Notifications</div>
+                                    <p class="text-muted small mb-0 font-weight-normal">Get reminded about notifications that haven't been addressed</p>
+                                </div>
+                                <i class="fas fa-chevron-up text-muted small chevron-icon"></i>
+                            </div>
+
+                            <div id="unansweredCollapse" class="collapse show" data-parent="#generalSettingsAccordion">
+                                <div class="card-body">
+                                    <!-- Item: Notify me when a message goes unanswered -->
+                                    <div class="notification-item d-flex justify-content-between align-items-center"
+                                        id="unansweredToggleHeader"
+                                        style="cursor: pointer;">
+
+                                        <div>
+                                            <strong class="d-block"> Notify me when a message goes unanswered</strong>
+                                            <small class="text-muted">Custom notification timing</small>
+                                        </div>
+                                        <span data-toggle="collapse"
+                                            data-target="#unansweredContentCollapse"
+                                            aria-expanded="true"
+                                            aria-controls="unansweredContentCollapse"
+                                            style="position: absolute; width: 2.75rem; height: 1.5rem; right: 15px; top: 50%; transform: translateY(-50%); z-index: 10;">
+                                        </span>
+                                        <div class="custom-control custom-switch custom-switch-lg">
+                                            <input type="checkbox" class="custom-control-input" id="unansweredEnabled" checked>
+                                            <label class="custom-control-label" for="unansweredEnabled"></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Collapsible Unanswered Content -->
+                                    <div class="collapse show schedule-content-wrapper" id="unansweredContentCollapse">
+
+                                        <!-- Applies To Checkboxes -->
+                                        <div class="applies-to-group d-flex flex-wrap pt-2">
+                                            <p class="mb-2 text-sm w-100">Select Time Unit</p>
+
+                                            <label class="applies-to-option mr-3 mb-2">
+                                                <input type="checkbox" id="Hours" checked>
+                                                <span>Hours</span>
+                                            </label>
+
+                                            <label class="applies-to-option mr-3 mb-2">
+                                                <input type="checkbox" id="Days">
+                                                <span>Days</span>
+                                            </label>
+                                            <!-- i should have a col-2 form input for type number here with a label as 'set value' -->
+                                        </div>
+
+                                        <!-- NEW: Time Selectors for Unanswered Section -->
+                                        <div class="time-pickers-container row mx-0 mb-4">
+                                            <div class="time-picker-group col-6">
+                                                <label class="d-block" for="unansweredFromTime">From</label>
+                                                <select class="form-control" id="unansweredFromTime"></select>
+                                            </div>
+                                            <div class="time-picker-group col-6 px-2">
+                                                <label class="d-block" for="unansweredToTime">To</label>
+                                                <select class="form-control" id="unansweredToTime"></select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Applies To Checkboxes -->
+                                        <div class="applies-to-group d-flex flex-wrap pt-2">
+                                            <p class="mb-2 text-sm w-100">Applies to</p>
+
+                                            <label class="applies-to-option mr-3 mb-2">
+                                                <input type="checkbox" id="allChannel" checked>
+                                                <span>All Channel</span>
+                                            </label>
+
+                                            <label class="applies-to-option mr-3 mb-2">
+                                                <input type="checkbox" id="emailChannel">
+                                                <span>Email Notifications</span>
+                                            </label>
+
+                                            <label class="applies-to-option mb-2">
+                                                <input type="checkbox" id="inAppChannel">
+                                                <span>In-App Notifications</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 3. Action Buttons -->
+                        <div class="actions-row d-flex justify-content-center mb-4">
+                            <button class="btn btn-light mr-3 px-4 shadow-sm">Reset</button>
+                            <!-- Trigger the Approval Modal (Page Two) -->
+                            <button class="btn btn-primary px-4 shadow-sm" data-toggle="modal" data-target="#approvalModal" onclick="saveAllPreferences()">Save Changes</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 2. SMS SETTINGS (Hidden View - Page Four/Five/Six) -->
+                <div id="sms-settings" class="settings-content-card d-none">
+
+                    <div class="settings-accordion-container" id="smsSettingsAccordion">
+
+                        <!-- Accordion Item 1: SMS Alerts -->
+                        <div class="card shadow-sm mb-3">
+                            <div class="card-header d-flex justify-content-between align-items-center"
+                                data-toggle="collapse" data-target="#smsAgentsCollapse" aria-expanded="true" aria-controls="smsAgentsCollapse">
+                                <div>
+                                    <div>SMS Alerts</div>
+                                    <p class="text-muted small mb-0 font-weight-normal">When a lead sends an SMS to an agent.</p>
+                                </div>
+                                <i class="fas fa-chevron-up text-muted small chevron-icon"></i>
+                            </div>
+
+                            <div id="smsAgentsCollapse" class="collapse show" data-parent="#smsSettingsAccordion">
+                                <!-- Agent Section Card -->
+                                <div class="sms-subcard mb-1">
+                                    <div class="sms-subcard-body">
+                                        <!-- Item 1: Agents Toggle -->
+                                        <div class="notification-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong class="d-block">Agents</strong>
+                                                <small class="text-muted">Receive notification when a lead sends an SMS</small>
+                                            </div>
+                                            <div class="custom-control custom-switch custom-switch-lg">
+                                                <input type="checkbox" class="custom-control-input" id="smsAgentsToggle" checked>
+                                                <label class="custom-control-label" for="smsAgentsToggle"></label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Select Role / Agent -->
+                                        <div class="notification-item">
+                                            <div class="row mx-0">
+                                                <div class="col-6">
+                                                    <label class="d-block font-weight-bold" for="selectRoleField">Select Role</label>
+                                                    <select class="form-control" id="selectRoleField">
+                                                        <option selected>All Agent</option>
+                                                        <option>Sales</option>
+                                                        <option>Support</option>
+                                                        <option>Marketing</option>
+                                                    </select>
+                                                </div>
+
+                                                <!-- start of smart dropdown -->
+                                                <div class="smart-dropdown">
+                                                    <label class="d-block font-weight-bold" for="selectAgent">Turn on for specific agent</label>
+                                                    <div class="custom-select-container">
+                                                        <button class="form-control text-left dropdown-toggle  smart-dropdown-menu" id="smartDropdownButton"
+                                                            aria-haspopup="true"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false" readonly data-container="body">
+                                                            <span id="smartSelectedCount">0 selected</span>
+                                                        </button>
+
+                                                        <span class="view-icon" data-toggle="modal" data-target="#smartDropdownModal">👁️</span>
+
+                                                        <!-- Dropdown -->
+                                                        <div class="dropdown-menu" aria-labelledby="smartDropdownButton">
+                                                            <div class="dropdown-header-fixed">
+                                                                <div class="form-check mb-2">
+                                                                    <input class="form-check-input" type="checkbox" id="smartSelectAll">
+                                                                    <label class="form-check-label font-weight-bold" for="smartSelectAll">
+                                                                        Select All
+                                                                    </label>
+                                                                </div>
+                                                                <input type="text" class="form-control search-input" placeholder="Search..."
+                                                                    id="smartSearchInput" />
+                                                            </div>
+
+                                                            <div class="options-scroll-area" id="smartOptionsList"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Modal for viewing selected items -->
+                                                    <div class="modal fade smart-dropdown-modal" id="smartDropdownModal" tabindex="-1"
+                                                        role="dialog" aria-labelledby="smartDropdownModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-md" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="smartDropdownModalLabel">Selected Items</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal">
+                                                                        <span>&times;</span>
+                                                                    </button>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <div class="modal-search-sticky">
+                                                                        <input type="text" class="form-control" id="smartModalSearch"
+                                                                            placeholder="Search selected items..." />
+                                                                    </div>
+
+                                                                    <div class="modal-scroll-area">
+                                                                        <ul class="list-group" id="smartSelectedList"></ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end of smart dropdown -->
+                                                <!-- <div class="col-6 px-2">
+                                                    <label class="d-block font-weight-bold" for="selectAgent">Turn on for specific agent</label>
+                                                    <select class="form-control" id="selectAgent">
+                                                        <option selected>All agent</option>
+                                                        <option>John Doe</option>
+                                                        <option>Jane Smith</option>
+                                                        <option>Michael Lee</option>
+                                                    </select>
+                                                </div> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Enable Schedule Card -->
+                                <div class="sms-subcard mb-2">
+                                    <div class="sms-subcard-body">
+                                        <!-- Enable Schedule -->
+                                        <div class="notification-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong class="d-block">Enable Schedule</strong>
+                                                <small class="text-muted">Automatically allow notification during set hours</small>
+                                            </div>
+                                            <div class="custom-control custom-switch custom-switch-lg">
+                                                <input type="checkbox" class="custom-control-input" id="smsEnableSchedule">
+                                                <label class="custom-control-label" for="smsEnableSchedule"></label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Notify at Anytime -->
+                                        <div class="notification-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong class="d-block">Receive at anytime</strong>
+                                                <small class="text-muted">Receive notification at any given time</small>
+                                            </div>
+                                            <div class="custom-control custom-switch custom-switch-lg">
+                                                <input type="checkbox" class="custom-control-input" id="smsReceiveAnytime" checked>
+                                                <label class="custom-control-label" for="smsReceiveAnytime"></label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Schedule Time Pickers -->
+                                        <div class="time-pickers-container row mx-0 mt-2">
+                                            <div class="time-picker-group col-6">
+                                                <label class="d-block" for="smsFromTime">From</label>
+                                                <select class="form-control" id="smsFromTime"></select>
+                                            </div>
+                                            <div class="time-picker-group col-6 px-2">
+                                                <label class="d-block" for="smsToTime">To</label>
+                                                <select class="form-control" id="smsToTime"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Action Buttons (For SMS Tab) -->
+                                <div class="actions-row d-flex justify-content-center mb-4">
+                                    <button class="btn btn-light mr-3 px-4 shadow-sm">Reset</button>
+                                    <!-- Trigger the Approval Modal (Page Two) -->
+                                    <button class="btn btn-primary px-4 shadow-sm" data-toggle="modal" data-target="#approvalModal" onclick="saveAllPreferences()">Save Changes</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        (function () {
+          const options = [
+            { id: 1, label: "Apple" },
+            { id: 2, label: "Banana" },
+            { id: 3, label: "Cherry" },
+            { id: 4, label: "Mango" },
+            { id: 5, label: "Orange" },
+            { id: 6, label: "Pineapple" },
+            { id: 7, label: "Strawberry" },
+            { id: 8, label: "Watermelon" },
+            { id: 9, label: "Grapes" },
+            { id: 10, label: "Guava" }
+          ];
+
+          const preselectedItems = [1, 2];
+          let selectedItems = [];
+
+          function renderOptions(filter = "") {
+            const filtered = options.filter(opt =>
+              opt.label.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            const list = filtered.map(opt => `
+              <label class="option-card">
+                <input class="option-checkbox" type="checkbox"
+                  value="${opt.id}" data-label="${opt.label}"
+                  id="check-${opt.id}"
+                  ${selectedItems.includes(opt.id) ? "checked" : ""}>
+                <span class="option-label-text">${opt.label}</span>
+              </label>
+            `).join("");
+
+            $("#smartOptionsList").html(list);
+            updateSelectAllState();
+          }
+
+          function updateSelectedCount() {
+            $("#smartSelectedCount").text(`${selectedItems.length} selected`);
+          }
+
+          function updateModalList(filter = "") {
+            const filtered = selectedItems
+              .map(id => options.find(opt => opt.id === id))
+              .filter(opt => opt && opt.label.toLowerCase().includes(filter.toLowerCase()));
+
+            const list = filtered.map(opt => `
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                ${opt.label}
+                <span class="remove-item" data-id="${opt.id}">&times;</span>
+              </li>
+            `).join("");
+
+            $("#smartSelectedList").html(list || "<p class='text-muted mb-0 p-2'>No items selected</p>");
+          }
+
+          function updateSelectAllState() {
+            $("#smartSelectAll").prop("checked", selectedItems.length === options.length);
+          }
+
+          $(document).ready(function () {
+            renderOptions();
+
+            // preload selections
+            if (preselectedItems.length > 0) {
+              selectedItems = [...preselectedItems];
+              updateSelectedCount();
+              renderOptions();
+            }
+
+            // search
+            $("#smartSearchInput").on("keyup", function () {
+              renderOptions($(this).val());
+            });
+
+            // item toggle
+            $(document).on("change", ".smart-dropdown .option-checkbox", function () {
+              const id = parseInt($(this).val());
+              if (this.checked) {
+                if (!selectedItems.includes(id)) selectedItems.push(id);
+              } else {
+                selectedItems = selectedItems.filter(i => i !== id);
+              }
+              updateSelectedCount();
+              updateSelectAllState();
+            });
+
+            // select all
+            $("#smartSelectAll").on("change", function () {
+              if (this.checked) {
+                selectedItems = options.map(opt => opt.id);
+              } else {
+                selectedItems = [];
+              }
+              updateSelectedCount();
+              renderOptions($("#smartSearchInput").val());
+            });
+
+            // modal show
+            $("#smartDropdownModal").on("show.bs.modal", function () {
+              updateModalList();
+            });
+
+            // modal search
+            $("#smartModalSearch").on("keyup", function () {
+              updateModalList($(this).val());
+            });
+
+            // remove item
+            $(document).on("click", ".smart-dropdown-modal .remove-item", function () {
+              const id = parseInt($(this).data("id"));
+              selectedItems = selectedItems.filter(i => i !== id);
+              updateSelectedCount();
+              updateModalList($("#smartModalSearch").val());
+              renderOptions($("#smartSearchInput").val());
+            });
+
+            // toggle dropdown visibility
+            $("#smartDropdownButton").on("click", function () {
+              $(".smart-dropdown .dropdown-menu").toggle();
+            });
+
+            // close dropdown if clicking outside
+            $(document).click(function (e) {
+              if (!$(e.target).closest(".smart-dropdown").length) {
+                $(".smart-dropdown .dropdown-menu").hide();
+              }
+            });
+
+            // submit
+            $("#smartSubmitBtn").on("click", function () {
+              if (selectedItems.length === 0) {
+                alert("No items selected!");
+              } else {
+                const payload = { selected_ids: selectedItems };
+                console.log("Submitted:", payload);
+                alert("Submitted: " + JSON.stringify(payload));
+              }
+            });
+          });
+        })();
+      </script>
+</body>
 </html>
